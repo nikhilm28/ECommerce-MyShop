@@ -60,29 +60,40 @@
   display: inherit;
 }  
 </style>
-
-<div class="wrapper">
+<body>
+   <div class="wrapper">
     <div class="sidebar">
         <h2>MyShop</h2>
-         <ul>
-            <li> <a href="#"><i class="fas fa-project-diagram"></i>Category</a></li>
-        </ul>    
+        
+            <a href="#"><i class="fas fa-project-diagram"></i>Category</a>
+           <button class="dropdown-btn">Category 
+                <i class="fa fa-caret-down"></i>
+            </button>
             
-            <ul>
-            <li><a href="#"><i class="fas fa-home"></i>My Account</a></li>
-            <li><a href="#"><i class="fas fa-user"></i>My Orders</a></li>
-            <li><a href="#"><i class="fas fa-address-card"></i>My Wishlist</a></li>
-            <li><a href="#"><i class="fas fa-project-diagram"></i>portfolio</a></li>
-            <li><a href="#"><i class="fas fa-blog"></i>Blogs</a></li>
-            <li><a href="#"><i class="fas fa-address-book"></i>Contact</a></li>
-            <li><a href="#"><i class="fas fa-map-pin"></i>Map</a></li>
-        </ul>
+            <div class="dropdown-container">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+    
+           
+           <a href="#"><i class="fas fa-home"></i>My Account</a>
+           <a href="#"><i class="fas fa-user"></i>My Orders</a>
+           <a href="#"><i class="fas fa-address-card"></i>My Wishlist</a>
+           <a href="#"><i class="fas fa-project-diagram"></i>portfolio</a>
+           <a href="#"><i class="fas fa-blog"></i>Blogs</a>
+           <a href="#"><i class="fas fa-address-book"></i>Contact</a>
+           <a href="#"><i class="fas fa-map-pin"></i>Map</a>
+    
         <div class="social_media">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
+    
+    
+    
     <div class="main_content">
         <div class="navbar">
             <div class="dropdown">
@@ -95,11 +106,12 @@
                     
                 %>
                 <div class="dropdown-content">
+                    <a href="index.jsp?category=all">All</a>
                     <%
                         for(Category c : clist)
                                 {
                     %>
-                    <a href="#"><%= c.getCategoryName()%></a>
+                    <a href="index.jsp?category=<%= c.getCatId() %>"><%= c.getCategoryName()%></a>
                     <% } %>
                     
                 </div>
@@ -137,3 +149,20 @@
         
     </div>
 </div>
+            <script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script> 
+</body>

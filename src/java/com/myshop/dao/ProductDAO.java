@@ -57,12 +57,36 @@ public class ProductDAO {
           Product product = new Product();
           product.setpName(rs.getString("name"));
           product.setpPrice(rs.getInt("sale_price"));
+          product.setpDiscount(rs.getInt("discount"));
           product.setpDescription(rs.getString("description"));
           product.setpImage(rs.getString("image"));
           products.add(product);
         }
     //    System.out.println(products);
         return products;
+    }
+    
+    public List<Product> getProductsById(int cid) throws SQLException
+    {
+        List<Product> products = new ArrayList<Product>();
+        String query = "select * from product where cat_id = ?";
+        con = DAOConnection.sqlconnection();
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, cid);
+        
+        ResultSet rs = ps.executeQuery();
+        while(rs.next())
+        {
+          Product product = new Product();
+          product.setpName(rs.getString("name"));
+          product.setpPrice(rs.getInt("sale_price"));
+          product.setpDiscount(rs.getInt("discount"));
+          product.setpDescription(rs.getString("description"));
+          product.setpImage(rs.getString("image"));
+          products.add(product);
+        }
+        return products;
+        
     }
     
     public boolean saveMobile(Mobile mobile)

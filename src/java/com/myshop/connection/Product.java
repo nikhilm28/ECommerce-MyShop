@@ -103,5 +103,9 @@ public class Product {
         return "Product{" + "pId=" + pId + ", pName=" + pName + ", pDescription=" + pDescription + ", pImage=" + pImage + ", pPrice=" + pPrice + ", pQty=" + pQty + ", pDiscount=" + pDiscount + '}';
     }
     
-    
+    public int getPriceAfterDiscount()
+    {
+        int dis = (int)((this.getpDiscount()/100.0) * this.getpPrice());
+        return this.getpPrice()-dis;
+    }
 }

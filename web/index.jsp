@@ -11,6 +11,7 @@
 	<title>MyShop</title>
 	<link rel="stylesheet" href="css/style.css">
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
 .column {
@@ -61,16 +62,34 @@
 .card button:hover {
   opacity: 0.7;
 }
+
+s {
+  text-decoration: line-through;
+}
         </style>
 </head>
 <body>
-        <%@include  file="components/new_navbar.jsp" %>
-        <div class="wrapper">
-            <div class="main_content">
+       <%@include  file="components/new_navbar.jsp" %>
+       <script src="js/script.js"></script>
+       <div class="wrapper">                                
+           <div class="main_content">
                 <div class="info">
-                    <% 
+                    <%  
+                           String cat = request.getParameter("category");
+                           
                             ProductDAO pdao = new ProductDAO(DAOConnection.sqlconnection());
-                            List<Product> list = pdao.getAllProducts();
+                            List<Product> list = null;
+                            if(cat == null || cat.trim().equals("all"))
+                            {
+                                list = pdao.getAllProducts();
+                            }
+                            else
+                            {
+                                int cid = Integer.parseInt(cat.trim());
+                               list = pdao.getProductsById(cid);
+                            }
+                             
+                            
                         %>
                         <div class="row">
                             
@@ -85,12 +104,16 @@
                                     </div>                                                                     
                                     
                                         <b> <%= p.getpName() %></b>
-                                        <p class="price">₹ <%= p.getpPrice() %></p>
+                                        <p class="price">₹ <%= p.getPriceAfterDiscount() %> <span><b> <%=p.getpDiscount()%>% off</b> <s>₹<%=p.getpPrice()%></s></span></p>
                                         <p><%= Helper.get10Words(p.getpDescription()) %></p>
                                         <p><button>Add to Cart</button></p>
                                 </div>
                             </div>
                                 <% 
+                                    }
+                                    if(list.size() == 0)
+                                    {
+                                        out.println("<h1>Currently No Products in this Category</h1>");
                                     }
                                 %>
                                 
@@ -99,7 +122,23 @@
                             
                 </div>
             </div>
-        </div>
+       </div>
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>        
 </body>
 
 
