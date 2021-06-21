@@ -49,7 +49,7 @@
   padding: 25px;
   text-decoration: none;
   display: block;
-  text-align:  right;
+ 
 }
 
 .dropdown-content a:hover {
@@ -116,6 +116,7 @@
                     
                 </div>
             </div> 
+                    <a href="#!" data-toggle="w3-modal" data-target="#id01" onclick="document.getElementById('id01').style.display='block'"> <i class="fa fa-fw fa-cart-plus" style="font-size:20px" ></i><span class="cart-items">( 0 )</span></a>
             <%
                if(user1 == null)
                  {
@@ -149,20 +150,5 @@
         
     </div>
 </div>
-            <script>
-    var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-  this.classList.toggle("active");
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-  dropdownContent.style.display = "none";
-  } else {
-  dropdownContent.style.display = "block";
-  }
-  });
-}
-</script> 
+             
 </body>

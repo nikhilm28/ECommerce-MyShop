@@ -21,11 +21,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/card.css">
-        <link rel="stylesheet" href="css/samplecss.css">
+        
+         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
         <title>JSP Page</title>
-    </head>
+        </head>
     <body>
         <%@include  file="components/new_navbar.jsp" %>
         <div class="wrapper">
@@ -111,43 +114,38 @@
                             </div>
                         </div>
                     </div>
-<!-- **************************************************************************************************** -->
-                    
-
-                    <!--Add Category Modal 
-                    <button onclick="document.getElementById('category-modal').style.display='block'" style="width:auto;">Login</button>
-
-                    -->
-                    <div id="category-form">
-                      <div id="category-modal" class="modal">
-                            
-                        <form class="modal-content animate" action="CategoryServlet" method="post">
-                            <div class="imgcontainer">
-                                <span onclick="document.getElementById('category-modal').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-                                <h2> Add Category</h2>
-                            </div>
-
-                            <div class="container">
-                                <label for="category_name"><b>Category Name</b></label>
-                                <input type="text" placeholder="Enter CAtegory Name" name="cat_name" required>
-
-                                <label for="category_desp"><b>Description</b></label>
-                                <input type="text" placeholder="Enter Description" name="cat_desp" required>
-
-                                <button type="submit">Save</button>
-                            </div>
-                        </form>
-                    </div>
-                        </div>
-                    <!-- End Category Modal -->  
-                       
-                    
-
-
-
-                </div>
+                       </div>
             </div>
         </div>
+<!-- **************************************************************************************************** -->
+
+<div class="w3-container">
+    <div id="category-modal" class="w3-modal">
+    <form class="w3-modal-content" action="CategoryServlet" method="post">
+        <header class="w3-container" style="text-align: center;"> 
+        <span onclick="document.getElementById('category-modal').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Add Category...</h2>
+      </header>
+      <div class="w3-container">
+           
+           <label for="category_name" style="background-color:powderblue;font-size:250%;"><b>Category Name</b></label><br>             
+          <input type="text" style="width: 80%;padding: 12px 20px;margin: 8px 0;" placeholder="Enter CAtegory Name" name="cat_name" required><br>
+          <label for="category_desp" style="background-color:powderblue;font-size:250%;"><b>Description</b></label><br>
+          <input type="text" style="width: 80%;padding: 12px 20px;margin: 8px 0;" placeholder="Enter Description" name="cat_desp" required><br>
+        
+      </div>
+      <footer class="w3-container">
+          <button type="submit" style="align-content: center;background-color: #04AA6D;color: white; width: 25%;padding: 14px 20px;margin: 8px 0;border: none; 
+  cursor: pointer;">
+              Save</button>
+       </footer>
+    </form>
+  </div>
+</div>
+
+                 
+
 
 
 

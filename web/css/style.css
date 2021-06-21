@@ -104,10 +104,10 @@ body{
 .wrapper .main_content .navbar a{
     float: right;
     text-align: center;
-    padding: 25px;
+    padding: 28px;
     color: white;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .wrapper .main_content .navbar a:hover{

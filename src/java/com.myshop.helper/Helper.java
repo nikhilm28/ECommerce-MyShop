@@ -7,7 +7,7 @@ public class Helper {
         if(strs.length > 10)
         {
             String res="";
-            for(int i=0; i<8; i++)
+            for(int i=0; i<=8; i++)
             {
                res = res+strs[i]+" "; 
             }

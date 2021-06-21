@@ -10,8 +10,10 @@
 	<meta charset="UTF-8">
 	<title>MyShop</title>
 	<link rel="stylesheet" href="css/style.css">
+        <%@include file="components/comman.jsp" %>
+        <script type="text/javascript" src="js/script.js"></script>
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
 .column {
@@ -66,11 +68,14 @@
 s {
   text-decoration: line-through;
 }
+button:hover {
+  opacity: 0.8;
+}
         </style>
 </head>
 <body>
        <%@include  file="components/new_navbar.jsp" %>
-       <script src="js/script.js"></script>
+       
        <div class="wrapper">                                
            <div class="main_content">
                 <div class="info">
@@ -106,7 +111,7 @@ s {
                                         <b> <%= p.getpName() %></b>
                                         <p class="price">₹ <%= p.getPriceAfterDiscount() %> <span><b> <%=p.getpDiscount()%>% off</b> <s>₹<%=p.getpPrice()%></s></span></p>
                                         <p><%= Helper.get10Words(p.getpDescription()) %></p>
-                                        <p><button>Add to Cart</button></p>
+                                        <p><button onclick="add_to_cart(<%=p.getpId()%>,'<%=p.getpName()%>',<%=p.getPriceAfterDiscount() %>)">Add to Cart</button></p>
                                 </div>
                             </div>
                                 <% 
@@ -121,24 +126,11 @@ s {
                         </div>
                             
                 </div>
+                                <%@include  file="components/common_modal.jsp" %>                
             </div>
+                                            
        </div>
-<script>
-    var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-  this.classList.toggle("active");
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-  dropdownContent.style.display = "none";
-  } else {
-  dropdownContent.style.display = "block";
-  }
-  });
-}
-</script>        
+                   
 </body>
 
 
