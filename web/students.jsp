@@ -18,8 +18,8 @@
         <% 
             Connection con = DAOConnection.sqlconnection();
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from user_info order by u_id desc limit 1;");
-            
+            ResultSet rs = stmt.executeQuery("select * from shopping_cart sc,product p where sc.product_id=p.product_id and phone = '7709260881'");
+           
         %>
         <table border ='1'>
             <tr>
@@ -43,10 +43,9 @@
 	<td><%out.println(rs.getString(5)); %></td>
 	<td><%out.println(rs.getString(6)); %></td>
 	<td><%out.println(rs.getString(7)); %></td>
-	<td><%out.println(rs.getString(8)); %></td>
-	  
-            </tr>
+        <td><%out.println(rs.getString(8)); %></td>
+        </tr>
             <% } %>
         </table>
-    </body>
+        </body>
 </html>

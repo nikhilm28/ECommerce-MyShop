@@ -46,16 +46,17 @@ function updateCart()
         console.log("Cart is Empty..");
         $(".cart-items").html("( 0 )");
         $(".cart-body").html("<h3>Cart is Empty</h3>");
-        $(".chekout-btn").addClass('disabled'); 
+       
     }
     else
     {
-        console.log(cart)
+       console.log(cart)
         $(".cart-items").html(`(${cart.length})`);
         let table = `
             <table class='table' border=1>
             <thead class='thread-light'>
                 <tr>
+                <th>Item Id </th>
                 <th>Item Name </th>
                 <th>Price </th>
                 <th>Quantity </th>
@@ -69,6 +70,7 @@ function updateCart()
         cart.map((item) => {
             table += `
                     <tr>
+                        <td> ${item.productId} </td>
                         <td> ${item.productName} </td>
                         <td> ${item.productPrice} </td>
                         <td> ${item.productQuantity} </td>
@@ -83,8 +85,8 @@ function updateCart()
                 <tr><td colspan='5' style="text-align: right"><b> Total Price : ${totalPrice} <b></td></tr>
             </table>`
             $(".cart-body").html(table);
-            $(".chekout-btn").removeClass('disabled');
-
+            
+ 
     }
         
     
@@ -103,4 +105,8 @@ $(document).ready(function () {
     updateCart()
 })
 
+function goToCheckout()
+{
+    window.location = "checkout.jsp"
+}
 

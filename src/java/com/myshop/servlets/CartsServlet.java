@@ -1,9 +1,7 @@
 package com.myshop.servlets;
 
-import com.myshop.connection.User;
+import com.myshop.dao.CartDAO;
 import com.myshop.dao.DAOConnection;
-import com.myshop.dao.UserDAO;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,49 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginServlet extends HttpServlet {
+public class CartsServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+                HttpSession session = request.getSession();
             
-            String userphone = request.getParameter("phone");
-            String userpassword = request.getParameter("password");
+            String phone = session.getAttribute("userphone").toString();
+            String name = request.getParameter("productname");
+            int productId = Integer.parseInt(request.getParameter("productid"));
             
-            UserDAO userdao = new UserDAO(DAOConnection.sqlconnection());
-            User user = userdao.getUserPhoneandPassword(userphone, userpassword);
-            System.out.println(user);
+            CartDAO cdao = new CartDAO(DAOConnection.sqlconnection());
+            cdao.deleteFromCart(productId, phone);
+            response.sendRedirect("mycart.jsp");
             
-            HttpSession session = request.getSession();
-            HttpSession session1 = request.getSession();
-            if(user == null)
-            {
-                session.setAttribute("alert_message", "Invalid Details");
-                response.sendRedirect("login.jsp");
-                return;
-             //   out.println("<h1> User not found</h1>");
-            }
-            else
-            {
-                out.println("<h1> Weclome User: "+ user.getName() + "</h1>");
-                session.setAttribute("current-user", user);
-                if(user.getUsertype().equals("admin"))
-                {
-                    response.sendRedirect("admin.jsp");
-                }
-                else if(user.getUsertype().equals("normal"))
-                {
-                    response.sendRedirect("index.jsp");
-                    session1.setAttribute("userphone", user.getPhone());
-                    
-                }
-                else
-                {
-                    out.println("User not Identified!!");
-                }
-            }                              
-                                         
         }
     }
 

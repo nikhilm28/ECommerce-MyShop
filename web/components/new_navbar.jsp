@@ -116,7 +116,7 @@
                     
                 </div>
             </div> 
-                    <a href="#!" data-toggle="w3-modal" data-target="#id01" onclick="document.getElementById('id01').style.display='block'"> <i class="fa fa-fw fa-cart-plus" style="font-size:20px" ></i><span class="cart-items">( 0 )</span></a>
+                    <a href="mycart.jsp?" > <i class="fa fa-fw fa-cart-plus" style="font-size:20px" ></i><span class="cart-items">( 0 )</span></a>
             <%
                if(user1 == null)
                  {

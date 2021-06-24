@@ -28,6 +28,18 @@
         <servlet-name>LaptopServlet</servlet-name>
         <servlet-class>com.myshop.servlets.LaptopServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.myshop.servlets.CartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartsServlet</servlet-name>
+        <servlet-class>com.myshop.servlets.CartsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.myshop.servlets.OrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>LaptopServlet</servlet-name>
         <url-pattern>/LaptopServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartsServlet</servlet-name>
+        <url-pattern>/CartsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/OrderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

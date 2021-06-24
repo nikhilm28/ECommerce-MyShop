@@ -1,9 +1,8 @@
 package com.myshop.servlets;
 
-import com.myshop.connection.User;
+import com.myshop.connection.Cart;
+import com.myshop.dao.CartDAO;
 import com.myshop.dao.DAOConnection;
-import com.myshop.dao.UserDAO;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,49 +11,52 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginServlet extends HttpServlet {
+public class CartServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            String userphone = request.getParameter("phone");
-            String userpassword = request.getParameter("password");
-            
-            UserDAO userdao = new UserDAO(DAOConnection.sqlconnection());
-            User user = userdao.getUserPhoneandPassword(userphone, userpassword);
-            System.out.println(user);
-            
+            /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            HttpSession session1 = request.getSession();
-            if(user == null)
+            
+            String phone = session.getAttribute("userphone").toString();
+            String name = request.getParameter("productname");
+            int productId = Integer.parseInt(request.getParameter("productid"));
+            int z = CartDAO.z;
+            int quantity = CartDAO.quantity;
+            int productPrice = Integer.parseInt(request.getParameter("pprice"));
+            int productTotal = Integer.parseInt(request.getParameter("pprice"));
+            int cartTotal = CartDAO.cartTotal;
+            
+            Cart c = new Cart();
+            c.setUserPhone(phone);
+            c.setProductId(productId);
+            c.setProductName(name);
+            c.setProductQuantity(quantity);
+            c.setProductPrice(productPrice);
+            c.setProductTotal(productTotal);
+            
+                        
+            CartDAO cdao = new CartDAO(DAOConnection.sqlconnection());
+            cdao.checkProductInCart(productId, phone);
+            
+            
+            if(z == 1)
             {
-                session.setAttribute("alert_message", "Invalid Details");
-                response.sendRedirect("login.jsp");
-                return;
-             //   out.println("<h1> User not found</h1>");
+                cdao.updateCart(cartTotal, quantity, productPrice, phone);
+                
             }
-            else
+            else if(z == 0)
             {
-                out.println("<h1> Weclome User: "+ user.getName() + "</h1>");
-                session.setAttribute("current-user", user);
-                if(user.getUsertype().equals("admin"))
-                {
-                    response.sendRedirect("admin.jsp");
-                }
-                else if(user.getUsertype().equals("normal"))
-                {
-                    response.sendRedirect("index.jsp");
-                    session1.setAttribute("userphone", user.getPhone());
-                    
-                }
-                else
-                {
-                    out.println("User not Identified!!");
-                }
-            }                              
-                                         
+                cdao.saveToCart(c);
+                response.sendRedirect("index.jsp");
+            }
+            
+            
+            
+           
+             
         }
     }
 

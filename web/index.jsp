@@ -11,7 +11,7 @@
 	<title>MyShop</title>
 	<link rel="stylesheet" href="css/style.css">
         <%@include file="components/comman.jsp" %>
-        <script type="text/javascript" src="js/script.js"></script>
+        <script src="js/script.js"></script>
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -111,7 +111,9 @@ button:hover {
                                         <b> <%= p.getpName() %></b>
                                         <p class="price">₹ <%= p.getPriceAfterDiscount() %> <span><b> <%=p.getpDiscount()%>% off</b> <s>₹<%=p.getpPrice()%></s></span></p>
                                         <p><%= Helper.get10Words(p.getpDescription()) %></p>
-                                        <p><button onclick="add_to_cart(<%=p.getpId()%>,'<%=p.getpName()%>',<%=p.getPriceAfterDiscount() %>)">Add to Cart</button></p>
+                                        <p><a href="CartServlet?productid=<%=p.getpId()%>&productname=<%=p.getpName()%>&pprice=<%=p.getPriceAfterDiscount()%>">
+                                            <button>Add to Cart</button>
+                                            </a></p>
                                 </div>
                             </div>
                                 <% 
@@ -133,5 +135,10 @@ button:hover {
                    
 </body>
 
-
 </html>
+<script>
+    function goToCheckout()
+{
+    window.location = "checkout.jsp"
+}
+</script>
