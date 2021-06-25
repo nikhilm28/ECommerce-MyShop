@@ -1,8 +1,14 @@
 package com.myshop.dao;
 
+import com.myshop.connection.Category;
 import com.myshop.connection.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDAO {
     
@@ -18,13 +24,14 @@ public class OrderDAO {
          boolean result = false;
          try {
             
-             String query = "insert into order_info(u_id, product_id, productname, orderamount, orderdate) values(?,?,?,?,CURRENT_TIMESTAMP)";
+             String query = "insert into order_info(product_id, productname,quantity, orderamount, date, userphone) values(?,?,?,?,CURRENT_DATE,?)";
              PreparedStatement ps = con.prepareStatement(query);
              
-             ps.setInt(1, order.getUserId());
-             ps.setInt(2, order.getProduct_id());
-             ps.setString(3, order.getProductName());
+             ps.setInt(1, order.getProduct_id());
+             ps.setString(2, order.getProductName());
+             ps.setInt(3, order.getProductQuantity());
              ps.setInt(4, order.getOrderAmount());
+             ps.setString(5, order.getUserPhone());
              
              ps.executeQuery();
                     
@@ -33,5 +40,25 @@ public class OrderDAO {
         } catch (Exception e) {
         }
          return result;
+    }
+    
+    public List<Order> getAllOrders() throws SQLException
+    {
+        List<Order> orders = new ArrayList<Order>();
+        
+            
+        String query = "select * from order_info";
+        con = DAOConnection.sqlconnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        while(rs.next())
+        {
+            Order order = new Order();
+            order.setOrderId(rs.getInt("order_id"));
+            order.setProduct_id(rs.getInt("product_id"));
+            order.setProductName(rs.getString("productname"));
+            orders.add(order);
+        }
+        return orders;
     }
 }

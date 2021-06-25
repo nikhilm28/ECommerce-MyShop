@@ -71,13 +71,46 @@ s {
 button:hover {
   opacity: 0.8;
 }
+.main_content{
+  width: 100%;
+  margin-left: 150px;
+  
+  .main_content .info{
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
         </style>
 </head>
 <body>
        <%@include  file="components/new_navbar.jsp" %>
        
-       <div class="wrapper">                                
+       <div  class="wrapper">
+           
+             <div class="sidebar">
+        
+        <div class="options">
+           <ul>
+            <li><a href="#"><i class="fas fa-home"></i>My Account</a></li>
+            <li><a href="myorders.jsp"><i class="fas fa-user"></i>My Orders</a></li>
+            <li><a href="#"><i class="fas fa-address-card"></i>My Wishlist</a></li>
+            <li><a href="#"><i class="fas fa-project-diagram"></i>portfolio</a></li>
+            <li><a href="#"><i class="fas fa-blog"></i>Blogs</a></li>
+            <li><a href="#"><i class="fas fa-address-book"></i>Contact</a></li>
+        </ul>  
+        </div>           
+            
+        <div class="social_media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>                       
            <div class="main_content">
+               <%@include  file="components/success.jsp" %>
                 <div class="info">
                     <%  
                            String cat = request.getParameter("category");
@@ -130,15 +163,9 @@ button:hover {
                 </div>
                                 <%@include  file="components/common_modal.jsp" %>                
             </div>
-                                            
-       </div>
+        </div>                                    
+       
                    
 </body>
 
 </html>
-<script>
-    function goToCheckout()
-{
-    window.location = "checkout.jsp"
-}
-</script>

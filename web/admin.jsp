@@ -1,3 +1,8 @@
+<%@page import="com.myshop.connection.Order"%>
+<%@page import="com.myshop.dao.OrderDAO"%>
+<%@page import="com.myshop.dao.UserDAO"%>
+<%@page import="com.myshop.connection.Product"%>
+<%@page import="com.myshop.dao.ProductDAO"%>
 <%@page import="com.myshop.connection.User"%>
 <%
     User user = (User) session.getAttribute("current-user");
@@ -35,12 +40,25 @@
             <div class="main_content">
                 <%@include  file="components/success.jsp" %>
                 <div class="info">
+                    <%  UserDAO udao = new UserDAO(DAOConnection.sqlconnection());
+                        List<User> ulist = udao.getAllUsers();
+                        
+                        ProductDAO pdao = new ProductDAO(DAOConnection.sqlconnection());
+                        List<Product> plist = pdao.getAllProducts();
+                        
+                        CategoryDAO cadao = new CategoryDAO(DAOConnection.sqlconnection());
+                        List<Category> calist = cadao.getCategories();
+                        
+                        OrderDAO odao = new OrderDAO(DAOConnection.sqlconnection());
+                        List<Order> olist = odao.getAllOrders();
+                    %>
                     <div class="row">
                         <div class="column">
                             <div class="card">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <h1><%= ulist.size() %></h1>
                                 <div class="container">
-                                    <h4><b>Users</b></h4>
+                                    <h4><b>Number of</b></h4> 
+                                    <p><h4><b>Users</b></h4></p>
                                     <a href="students.jsp">Click to see Last User</a> 
                                 </div>
                             </div>
@@ -56,10 +74,11 @@
                         </div>
                         <div class="column">
                             <div class="card">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <h1><%= plist.size() %></h1>
                                 <div class="container">
-                                    <h4><b>Products</b></h4> 
-                                    <p>Architect & Engineer</p> 
+                                    <h4><b>Number of</b></h4> 
+                                    <p><h4><b>Products</b></h4></p>
+                                <a href="students.jsp">Click to see Last User</a>
                                 </div>
                             </div>
                         </div>
@@ -88,10 +107,11 @@
                         </div>
                         <div class="column">
                             <div class="card">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <h1><%= calist.size() %></h1>
                                 <div class="container">
-                                    <h4><b>Delete Category</b></h4> 
-                                    <p>Architect & Engineer</p> 
+                                    <h4><b>Number of</b></h4> 
+                                    <p><h4><b>Category</b></h4></p>
+                                <a href="students.jsp">Click to see Last User</a>
                                 </div>
                             </div>
                         </div>
@@ -99,17 +119,18 @@
                             <div class="card">
                                 <img src="img/profile.png" alt="Avatar" style="width:50%">
                                 <div class="container">
-                                    <h4><b>Add Product</b></h4> 
+                                    <h4><b>Click to Delete Category</b></h4> 
                                     <a href="products.jsp">Click to see Add Products</a> 
                                 </div>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <h1><%= olist.size() %></h1>
                                 <div class="container">
-                                    <h4><b>Delete Product</b></h4> 
-                                    <p>Architect & Engineer</p> 
+                                    <h4><b>Number of</b></h4> 
+                                    <p><h4><b>Orders</b></h4></p>
+                                <a href="students.jsp">Click to see Last User</a>
                                 </div>
                             </div>
                         </div>

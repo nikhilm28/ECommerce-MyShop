@@ -1,8 +1,11 @@
 package com.myshop.dao;
 
+import com.myshop.connection.Product;
 import java.sql.*;
 
 import com.myshop.connection.User;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
     Connection con;
@@ -87,5 +90,28 @@ public class UserDAO {
         return user;
     }
     
+   public List<User> getAllUsers() throws SQLException
+    {
+        List<User> users = new ArrayList<User>();
+        String query = "select * from user_info";
+        con = DAOConnection.sqlconnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        while(rs.next())
+        {
+          User user = new User();
+          user.setU_id(rs.getInt("u_id"));
+          user.setName(rs.getString("name"));
+          user.setPhone(rs.getString("phone"));
+          user.setEmail(rs.getString("email"));
+          user.setAddress(rs.getString("address"));
+          user.setZipcode(rs.getString("zipcode"));
+          user.setPassword(rs.getString("password"));
+          users.add(user);
+        }
+    //    System.out.println(products);
+        return users;
+    }
  
 }

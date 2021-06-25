@@ -1,5 +1,8 @@
 package com.myshop.servlets;
 
+import com.myshop.connection.Order;
+import com.myshop.dao.DAOConnection;
+import com.myshop.dao.OrderDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,57 +11,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.myshop.connection.User;
-import com.myshop.dao.DAOConnection;
-import com.myshop.dao.UserDAO;
-
-public class RegisterServlet extends HttpServlet {
+public class OrderServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
+            HttpSession session = request.getSession();
             
-            String name = request.getParameter("name");
-            String phone = request.getParameter("phone");
-            String email = request.getParameter("email");
-            String address = request.getParameter("address");
-            String zipcode = request.getParameter("zipcode");
-            String password = request.getParameter("password");
+            String phone = session.getAttribute("userphone").toString();
+            String name = request.getParameter("pname");
+            int productId = Integer.parseInt(request.getParameter("productid"));
+            int productQty = Integer.parseInt(request.getParameter("pqty"));
+            int totalAmount = Integer.parseInt(request.getParameter("pamount"));
             
-            User userModal = new User(name, phone, email, address, zipcode, password, "normal");
+            Order order = new Order();
+            order.setUserPhone(phone);
+            order.setProductName(name);
+            order.setProduct_id(productId);
+            order.setProductQuantity(productQty);
+            order.setOrderAmount(totalAmount);
             
-            UserDAO regUser = new UserDAO(DAOConnection.sqlconnection());
-            HttpSession httpSession = request.getSession();
-                               
-            if(regUser.saveUser(userModal))
-            {
-                int userId;
-                String userName;
-                userId = UserDAO.insertKey;
-                userName = UserDAO.username;
-        
-                httpSession.setAttribute("success_message", "Welcome: "+ userName);
-     //           httpSession.setAttribute("message", "UserName:" + userName);
-                response.sendRedirect("register.jsp");
-                return;
-            }
-            else
-            {
-                httpSession.setAttribute("alert_message", "Phone No. Exists");
-                response.sendRedirect("register.jsp");          
-            }
+            OrderDAO odao = new OrderDAO(DAOConnection.sqlconnection());
+            odao.saveOrder(order);
+            session.setAttribute("success_message", "Order Placed Successfully....!");
+            response.sendRedirect("index.jsp");
             
-            
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

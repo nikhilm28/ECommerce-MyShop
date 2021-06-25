@@ -59,32 +59,25 @@
 .dropdown:hover .dropdown-content {
   display: inherit;
 }  
+
+
 </style>
 <body>
    <div class="wrapper">
     <div class="sidebar">
         <h2>MyShop</h2>
-        
-            <a href="#"><i class="fas fa-project-diagram"></i>Category</a>
-           <button class="dropdown-btn">Category 
-                <i class="fa fa-caret-down"></i>
-            </button>
+        <div class="options">
+           <ul>
+            <li><a href="#"><i class="fas fa-home"></i>My Account</a></li>
+            <li><a href="myorders.jsp"><i class="fas fa-user"></i>My Orders</a></li>
+            <li><a href="#"><i class="fas fa-address-card"></i>My Wishlist</a></li>
+            <li><a href="#"><i class="fas fa-project-diagram"></i>portfolio</a></li>
+            <li><a href="#"><i class="fas fa-blog"></i>Blogs</a></li>
+            <li><a href="#"><i class="fas fa-address-book"></i>Contact</a></li>
+        </ul>  
+        </div>
             
-            <div class="dropdown-container">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-    
-           
-           <a href="#"><i class="fas fa-home"></i>My Account</a>
-           <a href="#"><i class="fas fa-user"></i>My Orders</a>
-           <a href="#"><i class="fas fa-address-card"></i>My Wishlist</a>
-           <a href="#"><i class="fas fa-project-diagram"></i>portfolio</a>
-           <a href="#"><i class="fas fa-blog"></i>Blogs</a>
-           <a href="#"><i class="fas fa-address-book"></i>Contact</a>
-           <a href="#"><i class="fas fa-map-pin"></i>Map</a>
-    
+              
         <div class="social_media">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -116,11 +109,12 @@
                     
                 </div>
             </div> 
-                    <a href="mycart.jsp?" > <i class="fa fa-fw fa-cart-plus" style="font-size:20px" ></i><span class="cart-items">( 0 )</span></a>
+                    
             <%
                if(user1 == null)
                  {
             %>
+            <a href="mycart.jsp?" > <i class="fa fa-fw fa-cart-plus" style="font-size:20px" ></i></a>
             <a href="register.jsp"> <i class="fa fa-fw fa-address-book"></i>Register</a>
             <a href="login.jsp"> <i class="fa fa-fw fa-user"></i>Login</a>
             <a class="active" href="index.jsp"> <i class="fa fa-fw fa-home"></i>Home</a>
@@ -139,6 +133,7 @@
                 else
                 {
             %>
+            <a href="mycart.jsp?" > <i class="fa fa-fw fa-cart-plus" style="font-size:20px" ></i></a>
                  <a href="LogoutServlet"> <i class="fa fa-fw fa-address-book"></i>Logout</a>
             <a href="#"><i class="fa fa-fw fa-user"></i><%= user1.getName() %></a>
             <a class="active" href="index.jsp"> <i class="fa fa-fw fa-home"></i>Home</a>

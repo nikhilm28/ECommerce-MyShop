@@ -2,40 +2,46 @@ package com.myshop.connection;
 
 public class Order {
     private int orderId;
-    private int userId;
+    private String userPhone;
     private int product_id;
-    private int orderDate;
     private String productName;
-    private int orderDiscount;
+    private int productQuantity;
     private int orderAmount;
-    private String shippingAddress;
-    private String billingAddress;
+    private String orderDate;
 
     public Order() {
     }
 
-    public Order(int orderId, int userId, int product_id, int orderDate, String productName, int orderDiscount, int orderAmount, String shippingAddress, String billingAddress) {
+    public Order(int orderId, String userPhone, int product_id, String productName, int productQuantity, int orderAmount, String orderDate) {
         this.orderId = orderId;
-        this.userId = userId;
+        this.userPhone = userPhone;
         this.product_id = product_id;
-        this.orderDate = orderDate;
         this.productName = productName;
-        this.orderDiscount = orderDiscount;
+        this.productQuantity = productQuantity;
         this.orderAmount = orderAmount;
-        this.shippingAddress = shippingAddress;
-        this.billingAddress = billingAddress;
+        this.orderDate = orderDate;
     }
 
-    public Order(int userId, int product_id, int orderDate, String productName, int orderDiscount, int orderAmount, String shippingAddress, String billingAddress) {
-        this.userId = userId;
+    public Order(String userPhone, int product_id, String productName, int productQuantity, int orderAmount, String orderDate) {
+        this.userPhone = userPhone;
         this.product_id = product_id;
-        this.orderDate = orderDate;
         this.productName = productName;
-        this.orderDiscount = orderDiscount;
+        this.productQuantity = productQuantity;
         this.orderAmount = orderAmount;
-        this.shippingAddress = shippingAddress;
-        this.billingAddress = billingAddress;
+        this.orderDate = orderDate;
     }
+
+    
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    
 
     public int getOrderId() {
         return orderId;
@@ -45,28 +51,13 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
+    
     public int getProduct_id() {
         return product_id;
     }
 
     public void setProduct_id(int product_id) {
         this.product_id = product_id;
-    }
-
-    public int getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(int orderDate) {
-        this.orderDate = orderDate;
     }
 
     public String getProductName() {
@@ -77,12 +68,12 @@ public class Order {
         this.productName = productName;
     }
 
-    public int getOrderDiscount() {
-        return orderDiscount;
+    public int getProductQuantity() {
+        return productQuantity;
     }
 
-    public void setOrderDiscount(int orderDiscount) {
-        this.orderDiscount = orderDiscount;
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 
     public int getOrderAmount() {
@@ -93,28 +84,20 @@ public class Order {
         this.orderAmount = orderAmount;
     }
 
-    public String getShippingAddress() {
-        return shippingAddress;
+    public String getOrderDate() {
+        return orderDate;
     }
 
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
-    public String getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     @Override
     public String toString() {
-        return "Order{" + "orderId=" + orderId + ", userId=" + userId + ", product_id=" + product_id + ", orderDate=" + orderDate + ", productName=" + productName + ", orderDiscount=" + orderDiscount + ", orderAmount=" + orderAmount + ", shippingAddress=" + shippingAddress + ", billingAddress=" + billingAddress + '}';
+        return "Order{" + "orderId=" + orderId + ", userPhone=" + userPhone + ", product_id=" + product_id + ", productName=" + productName + ", productQuantity=" + productQuantity + ", orderAmount=" + orderAmount + ", orderDate=" + orderDate + '}';
     }
-    
-    
-   
-    
+
+         
+       
+  
 }

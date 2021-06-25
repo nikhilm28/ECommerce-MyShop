@@ -33,41 +33,30 @@ body{
   margin-bottom: 30px;
 }
 
-.wrapper .sidebar a{
+.wrapper .sidebar .options ul li{
   padding: 15px;
-  text-decoration: none;
-  display: block;
-  color: #bdb8d7;
-  width: 100%;
-  text-align: left;
   border-bottom: 1px solid #bdb8d7;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   border-top: 1px solid rgba(255,255,255,0.05);
-  outline: none;
 } 
 
-.wrapper .sidebar .dropdown-btn{
-  padding: 15px;    
-  text-decoration: none;
+.wrapper .sidebar .options ul li a{
+  color: #bdb8d7;
   display: block;
-  
-  width: 100%; 
-  text-align: left;
-  background-color: none;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(255,255,255,0.05);
-  outline: none;
-} 
+}
 
+.wrapper .sidebar .options ul li a .fas{
+  width: 25px;
+}
 
-
-.wrapper .sidebar a:hover, dropdown-btn:hover{
+.wrapper .sidebar .options ul li:hover{
   background-color: #594f8d;
 }
     
-.wrapper .sidebar a:hover a{
+.wrapper .sidebar .options ul li:hover a{
   color: #fff;
 }
+
  
 .wrapper .sidebar .social_media{
   position: absolute;
