@@ -79,6 +79,11 @@ public class ProductServlet extends HttpServlet {
             {
                 response.sendRedirect("laptop.jsp");
             }
+            else
+            {
+                session.setAttribute("success_message", "Product Added Successfully...");
+                response.sendRedirect("admin.jsp");
+            }
         }
     }
 

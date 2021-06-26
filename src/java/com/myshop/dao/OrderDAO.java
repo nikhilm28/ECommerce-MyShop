@@ -1,6 +1,5 @@
 package com.myshop.dao;
 
-import com.myshop.connection.Category;
 import com.myshop.connection.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,8 +56,36 @@ public class OrderDAO {
             order.setOrderId(rs.getInt("order_id"));
             order.setProduct_id(rs.getInt("product_id"));
             order.setProductName(rs.getString("productname"));
+            order.setProductQuantity(rs.getInt("quantity"));
+            order.setOrderAmount(rs.getInt("orderamount"));
+            order.setOrderDate(rs.getString("date"));
+            order.setUserPhone(rs.getString("userphone"));
             orders.add(order);
         }
         return orders;
+    }
+    
+    public List<Order> getMyOrders(String phone) throws SQLException
+    {
+        List<Order> orders = new ArrayList<Order>();
+        
+        String query="select * from order_info where phone = ?";
+        con = DAOConnection.sqlconnection();
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, phone);
+        
+        ResultSet rs = ps.executeQuery();
+        while(rs.next())
+        {
+            Order order = new Order();
+            order.setOrderId(rs.getInt("order_id"));
+            order.setProductName(rs.getString("productname"));
+            order.setProductQuantity(rs.getInt("quantity"));
+            order.setOrderAmount(rs.getInt("orderamount"));
+            order.setOrderDate(rs.getString("date"));
+            orders.add(order);
+        }
+        return orders;
+        
     }
 }

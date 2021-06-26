@@ -55,39 +55,41 @@
                     <div class="row">
                         <div class="column">
                             <div class="card">
-                                <h1><%= ulist.size() %></h1>
+                                <img src="img/users.png" alt="Avatar" style="width:50%">
+                                
                                 <div class="container">
-                                    <h4><b>Number of</b></h4> 
-                                    <p><h4><b>Users</b></h4></p>
-                                    <a href="students.jsp">Click to see Last User</a> 
+                                    <h4><b><%= ulist.size() %> Users</b></h4> 
+                                    
+                                    <a href="users.jsp">Click to see All Users</a> 
                                 </div>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <img src="img/plus.png" alt="Avatar" style="width:25%">
                                 <div class="container">
-                                    <h4><b>Categories</b></h4> 
-                                    <p>Architect & Engineer</p> 
+                                    <h4><b>Add Product</b></h4> 
+                                    <a href="products.jsp">Click to add Product</a>
                                 </div>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
-                                <h1><%= plist.size() %></h1>
+                                <img src="img/grocery.png" alt="Avatar" style="width: 50%">
+                                <h1></h1>
                                 <div class="container">
-                                    <h4><b>Number of</b></h4> 
-                                    <p><h4><b>Products</b></h4></p>
-                                <a href="students.jsp">Click to see Last User</a>
+                                    <h4><b><%= plist.size() %> Products</b></h4> 
+                                    
+                                <a href="allproducts.jsp">Click to see All Products</a>
                                 </div>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <img src="img/keys.png" alt="Avatar" style="width:50%">
                                 <div class="container">
-                                    <h4><b>Orders</b></h4> 
-                                    <p>Architect & Engineer</p> 
+                                    <h4><b>Delete Product</b></h4> 
+                                    <p>Click to Delete Product</p> 
                                 </div>
                             </div>
                         </div>
@@ -97,7 +99,7 @@
                     <div class="row">
                         <div class="column">
                             <div class="card" data-toggle="modal" data-target="#category-modal">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <img src="img/basket.png" alt="Avatar" style="width:50%">
                                 <div class="container">
                                     <h4><span onclick="document.getElementById('category-modal').style.display='block'" style="width:auto;">Click to
                                             Add Category</span></h4> 
@@ -107,17 +109,16 @@
                         </div>
                         <div class="column">
                             <div class="card">
-                                <h1><%= calist.size() %></h1>
+                                <img src="img/list.png" alt="Avatar" style="width: 50%">
+                                <h1></h1>
                                 <div class="container">
-                                    <h4><b>Number of</b></h4> 
-                                    <p><h4><b>Category</b></h4></p>
-                                <a href="students.jsp">Click to see Last User</a>
+                                    <h4><b><%= calist.size() %> Category</b></h4> 
                                 </div>
                             </div>
                         </div>
                         <div class="column">
                             <div class="card">
-                                <img src="img/profile.png" alt="Avatar" style="width:50%">
+                                <img src="img/keys.png" alt="Avatar" style="width:30%">
                                 <div class="container">
                                     <h4><b>Click to Delete Category</b></h4> 
                                     <a href="products.jsp">Click to see Add Products</a> 
@@ -126,11 +127,12 @@
                         </div>
                         <div class="column">
                             <div class="card">
-                                <h1><%= olist.size() %></h1>
+                                <img src="img/order.png" alt="Avatar" style="width:50%">
+                                <h1></h1>
                                 <div class="container">
-                                    <h4><b>Number of</b></h4> 
-                                    <p><h4><b>Orders</b></h4></p>
-                                <a href="students.jsp">Click to see Last User</a>
+                                    <h4><b><%= olist.size() %> Orders</b></h4> 
+                                    
+                                <a href="orders.jsp">Click to see All Orders</a>
                                 </div>
                             </div>
                         </div>

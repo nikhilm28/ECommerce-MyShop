@@ -59,6 +59,7 @@ public class ProductDAO {
           product.setpName(rs.getString("name"));
           product.setpPrice(rs.getInt("sale_price"));
           product.setpDiscount(rs.getInt("discount"));
+          product.setpQty(rs.getInt("qty"));
           product.setpDescription(rs.getString("description"));
           product.setpImage(rs.getString("image"));
           products.add(product);

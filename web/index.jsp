@@ -156,16 +156,14 @@ button:hover {
                                         out.println("<h1>Currently No Products in this Category</h1>");
                                     }
                                 %>
-                                
-                            
+                              
                         </div>
-                            
+                          
                 </div>
                                 <%@include  file="components/common_modal.jsp" %>                
             </div>
-        </div>                                    
-       
-                   
+        </div>                                  
+                      
 </body>
 
 </html>
