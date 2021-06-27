@@ -69,7 +69,7 @@ public class OrderDAO {
     {
         List<Order> orders = new ArrayList<Order>();
         
-        String query="select * from order_info where phone = ?";
+        String query="select * from order_info where userphone = ? order by order_id desc ";
         con = DAOConnection.sqlconnection();
         PreparedStatement ps = con.prepareStatement(query);
         ps.setString(1, phone);

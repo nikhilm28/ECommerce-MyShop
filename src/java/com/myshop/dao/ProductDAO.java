@@ -47,7 +47,7 @@ public class ProductDAO {
     public List<Product> getAllProducts() throws SQLException
     {
         List<Product> products = new ArrayList<Product>();
-        String query = "select * from product";
+        String query = "select * from product order by random()";
         con = DAOConnection.sqlconnection();
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
